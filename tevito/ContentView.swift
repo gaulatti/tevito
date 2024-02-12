@@ -20,7 +20,9 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            VideoPlayer(player: player).ignoresSafeArea()
+            VideoPlayer(player: player).ignoresSafeArea().onAppear() {
+                player.play()
+            }
         }
     }
 
