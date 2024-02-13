@@ -1,10 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "tevito.front.app.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "tevito.front.app.2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     }
