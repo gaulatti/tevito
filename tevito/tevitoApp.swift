@@ -25,7 +25,7 @@ struct tevitoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(selection: .home)
         }
         .modelContainer(sharedModelContainer)
     }
