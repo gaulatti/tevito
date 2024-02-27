@@ -3,7 +3,7 @@ import SwiftData
 import AVKit
 
 struct ContentView: View {
-    enum Tab { case home, news, schlager, bbtv, rtl, settings }
+    enum Tab { case home, news, schlager, bbtv, rtl, quad, settings }
     @State var selection: Tab
     
     /**
@@ -51,6 +51,27 @@ struct ContentView: View {
                         rtlPlayer.pause()
                     }
                 }.tabItem { Text("RTL") }.tag(Tab.rtl)
+                VStack {
+                    HStack {
+                        VideoPlayer(player: rtlPlayer).ignoresSafeArea().onAppear() {
+                            rtlPlayer.play()
+                        }.onDisappear() {
+                            rtlPlayer.pause()
+                        }
+                        VideoPlayer(player: bbtvPlayer).ignoresSafeArea().onAppear() {
+                            bbtvPlayer.play()
+                        }.onDisappear() {
+                            bbtvPlayer.pause()
+                        }
+                    }
+                    HStack {
+                        VideoPlayer(player: schlagerPlayer).ignoresSafeArea().onAppear() {
+                            schlagerPlayer.play()
+                        }.onDisappear() {
+                            schlagerPlayer.pause()
+                        }
+                    }
+                }.tabItem { Text("Quad") }.tag(Tab.quad)
                 VStack {
                     Text("settings")
                 }.tabItem { Text("Settings") }.tag(Tab.settings)
