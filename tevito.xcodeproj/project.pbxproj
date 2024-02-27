@@ -12,6 +12,7 @@
 		7159D8EA2B687125005212BE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7159D8E92B687125005212BE /* Item.swift */; };
 		7159D8EC2B687126005212BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7159D8EB2B687126005212BE /* Assets.xcassets */; };
 		7159D8EF2B687126005212BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7159D8EE2B687126005212BE /* Preview Assets.xcassets */; };
+		AAFC42D72B8E801F00F690E1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC42D62B8E801F00F690E1 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7159D8E92B687125005212BE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7159D8EB2B687126005212BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7159D8EE2B687126005212BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAFC42D62B8E801F00F690E1 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +55,8 @@
 		7159D8E42B687125005212BE /* tevito */ = {
 			isa = PBXGroup;
 			children = (
+				AAFC42D52B8E800D00F690E1 /* views */,
 				7159D8E52B687125005212BE /* tevitoApp.swift */,
-				7159D8E72B687125005212BE /* ContentView.swift */,
 				7159D8E92B687125005212BE /* Item.swift */,
 				7159D8EB2B687126005212BE /* Assets.xcassets */,
 				7159D8ED2B687126005212BE /* Preview Content */,
@@ -68,6 +70,15 @@
 				7159D8EE2B687126005212BE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AAFC42D52B8E800D00F690E1 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				7159D8E72B687125005212BE /* ContentView.swift */,
+				AAFC42D62B8E801F00F690E1 /* MenuView.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			files = (
 				7159D8E82B687125005212BE /* ContentView.swift in Sources */,
 				7159D8EA2B687125005212BE /* Item.swift in Sources */,
+				AAFC42D72B8E801F00F690E1 /* MenuView.swift in Sources */,
 				7159D8E62B687125005212BE /* tevitoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

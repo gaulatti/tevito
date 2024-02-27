@@ -1,10 +1,3 @@
-//
-//  tevitoApp.swift
-//  tevito
-//
-//  Created by Javier Godoy Núñez on 1/29/24.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -25,7 +18,7 @@ struct tevitoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(selection: .home)
+            ContentView()
         }
         .modelContainer(sharedModelContainer)
     }

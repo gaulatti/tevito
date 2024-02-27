@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 import AVKit
 
-struct ContentView: View {
+struct MenuView: View {
     enum Tab { case home, news, schlager, bbtv, rtl, quad, settings }
     @State var selection: Tab
     
@@ -81,5 +81,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(selection: .home)
+    MenuView(selection: .home)
 }
