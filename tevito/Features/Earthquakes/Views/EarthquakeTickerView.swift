@@ -6,29 +6,35 @@ struct EarthquakeTickerView: View {
 
     var body: some View {
         GeometryReader { geo in
-            let labels = quakes.map { quake -> String in
-                let utc = formattedDate(quake.timestamp, utc: true)
-                let local = formattedDate(quake.timestamp, utc: false)
-                return "[Local: \(local)] [UTC: \(utc)] | \(quake.additionalData.flynn_region) | M\(String(format: "%.1f", quake.magnitude))"
-            }
-            let totalWidth = CGFloat(labels.count) * (geo.size.width / max(1, CGFloat(labels.count))) * 2
-
-            HStack(spacing: 0) {
-                ForEach(labels, id: \.self) { label in
-                    Text(label)
-                        .foregroundColor(colorForLabel(label: label, quake: quakes[labels.firstIndex(of: label)!]))
-                        .padding(.horizontal, 20)
+            if quakes.isEmpty {
+                Text("No recent earthquakes to display")
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.7))
+            } else {
+                // Build labels and scroll HStack
+                let labels = quakes.enumerated().map { idx, quake -> (id: Int, text: String, color: Color) in
+                    let utc = formattedDate(quake.timestamp, utc: true)
+                    let local = formattedDate(quake.timestamp, utc: false)
+                    let region = quake.additionalData?.flynn_region ?? "Unknown region"
+                    let text = "[Local: \(local)] [UTC: \(utc)] | \(region) | M\(String(format: "%.1f", quake.magnitude))"
+                    let color: Color = quake.magnitude >= 5 ? .red : .white
+                    return (id: idx, text: text, color: color)
                 }
-                ForEach(labels, id: \.self) { label in
-                    Text(label)
-                        .foregroundColor(colorForLabel(label: label, quake: quakes[labels.firstIndex(of: label)!]))
-                        .padding(.horizontal, 20)
+                let totalWidth = geo.size.width * 2
+                HStack(spacing: 0) {
+                    ForEach(Array(labels + labels), id: \.0) { item in
+                        Text(item.text)
+                            .foregroundColor(item.color)
+                            .lineLimit(1)
+                            .padding(.horizontal, 20)
+                    }
                 }
-            }
-            .offset(x: animate ? -totalWidth/2 : 0)
-            .onAppear {
-                withAnimation(.linear(duration: Double(totalWidth) / 50).repeatForever(autoreverses: false)) {
-                    animate = true
+                .offset(x: animate ? -totalWidth : 0)
+                .onAppear {
+                    withAnimation(.linear(duration: Double(totalWidth) / 50).repeatForever(autoreverses: false)) {
+                        animate = true
+                    }
                 }
             }
         }
@@ -42,9 +48,5 @@ struct EarthquakeTickerView: View {
         formatter.timeStyle = .short
         formatter.timeZone = utc ? TimeZone(abbreviation: "UTC") : .current
         return formatter.string(from: date)
-    }
-
-    private func colorForLabel(label: String, quake: Earthquake) -> Color {
-        return quake.magnitude >= 5 ? .red : .white
     }
 }

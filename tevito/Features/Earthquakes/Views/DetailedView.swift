@@ -26,7 +26,7 @@ struct DetailedView: View {
                         .frame(height: 200)
                         Text("Magnitude: \(quake.magnitude, specifier: "%.1f")")
                             .font(.title)
-                        Text("Location: \(quake.additionalData.flynn_region)")
+                        Text("Location: \(quake.additionalData?.flynn_region)")
                         Text("Depth: \(quake.depth, specifier: "%.1f") km")
                         Text("Coordinates: [\(quake.latitude), \(quake.longitude)]")
                         Text("Time (UTC): \(formattedDate(quake.timestamp, utc: true))")

@@ -1,7 +1,8 @@
 import SwiftUI
+// Remove feature module imports
 
 struct ContentView: View {
-    enum Tab { case home, news, player, settings }
+    enum Tab { case home, news, player, earthquakes, settings }
     @State private var selection: Tab = .home
 
     var body: some View {
@@ -24,6 +25,13 @@ struct ContentView: View {
             }
             .tabItem { Label("Player", systemImage: "play.tv") }
             .tag(Tab.player)
+
+            // New Earthquakes section
+            NavigationStack {
+                EarthquakesView()
+            }
+            .tabItem { Label("Nazca", systemImage: "globe.europe.africa") }
+            .tag(Tab.earthquakes)
 
             // Wrap SettingsView in NavigationStack if it needs internal navigation
             NavigationStack {

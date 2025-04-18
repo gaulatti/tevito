@@ -5,7 +5,8 @@ struct GlobalMapView: View {
     let earthquakes: [Earthquake]
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        span: MKCoordinateSpan(latitudeDelta: 180, longitudeDelta: 360)
+        // Zoom in: reduce lat/lon span for a closer world view
+        span: MKCoordinateSpan(latitudeDelta: 90, longitudeDelta: 180)
     )
 
     var body: some View {
