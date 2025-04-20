@@ -23,7 +23,7 @@ struct ContentView: View {
             NavigationStack {
                 PlayerView()
             }
-            .tabItem { Label("Player", systemImage: "play.tv") }
+            .tabItem { Label("Router", systemImage: "play.tv") }
             .tag(Tab.player)
 
             // New Earthquakes section
